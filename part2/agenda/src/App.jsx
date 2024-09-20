@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { getAllPersons } from './services/persons';
 import Filter from './Filter';
 import PersonForm from './PersonForm';
+import PersonList from './PersonList';
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
@@ -10,11 +11,13 @@ const App = () => {
   const [nameFilter, setNameFilter] = useState('');
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        setPersons(response.data)
-      })
+    getAllPersons((persons, error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        setPersons(persons);
+      }
+    })
   }, []);
 
   return (
@@ -30,10 +33,7 @@ const App = () => {
         setNewNumber={setNewNumber} 
       />
       <h2>Numbers</h2>
-      {
-        (nameFilter === '') ? persons.map(person => <p key={person.id}>{person.name} {person.number}</p>) :
-        persons.filter(person => person.name.toLowerCase().includes(nameFilter.toLowerCase())).map(person => <p key={person.id}>{person.name} {person.number}</p>)
-      }
+      <PersonList persons={persons} setPersons={setPersons} filter={nameFilter} />
     </div>
   )
 }
