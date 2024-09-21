@@ -1,6 +1,6 @@
 import { createPerson, updatePerson, getPerson } from "./services/persons";
 
-const PersonForm = ( { persons, setPersons, newName, setNewName, newNumber, setNewNumber}) => {
+const PersonForm = ( { persons, setPersons, newName, setNewName, newNumber, setNewNumber, setNotification }) => {
   function clearForm() {
     setNewName('');
     setNewNumber('');
@@ -12,8 +12,10 @@ const PersonForm = ( { persons, setPersons, newName, setNewName, newNumber, setN
       if(person) {
         setPersons(persons.concat(person));
         clearForm();
+        setNotification({message: `Added ${person.name}`, type: 'success'});
       } else {
         console.log(error);
+        setNotification({message: `Error on service`, type: 'error'});
       }
     });
   }
@@ -25,8 +27,10 @@ const PersonForm = ( { persons, setPersons, newName, setNewName, newNumber, setN
       if(updatedPerson) {
         setPersons(persons.map(p => p.id !== updatedPerson.id ? p : updatedPerson));
         clearForm();
+        setNotification({message: `Updated ${updatedPerson.name}`, type: 'success'});
       } else {
         console.log(error);
+        setNotification({message: `Error on service`, type: 'error'});
       }
     });
   }
@@ -43,6 +47,7 @@ const PersonForm = ( { persons, setPersons, newName, setNewName, newNumber, setN
         }
       } else if (error) {
         console.log(error);
+        setNotification({message: `Error on service`, type: 'error'});
       }
     });
   }

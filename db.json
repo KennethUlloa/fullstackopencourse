@@ -1,34 +1,29 @@
 {
   "persons": [
     {
-      "name": "Ada Lovelace",
-      "number": "132132121",
-      "id": "2"
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": "4"
-    },
-    {
-      "id": "676f",
-      "name": "Robin Scherbatsky",
-      "number": "126350"
-    },
-    {
-      "id": "3202",
-      "name": "Barney Stinson",
-      "number": "520360"
-    },
-    {
-      "id": "22cf",
-      "name": "Arto Hartelas",
-      "number": "123502502"
-    },
-    {
       "id": "6432",
       "name": "Arto Helas",
       "number": "520-5820-555"
+    },
+    {
+      "id": "94de",
+      "name": "Robin Scherbatsky",
+      "number": "123456-123"
+    },
+    {
+      "id": "75b2",
+      "name": "Barney Stinson",
+      "number": "321565-4564"
+    },
+    {
+      "id": "d878",
+      "name": "Marshall",
+      "number": "Eriksen"
+    },
+    {
+      "id": "7e2a",
+      "name": "Ted Mosby",
+      "number": "485154-5585"
     }
   ]
 }
